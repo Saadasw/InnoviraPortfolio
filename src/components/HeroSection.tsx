@@ -29,12 +29,38 @@ const HeroSection: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="primary" size="lg" className="min-w-48">
+            <Button 
+              variant="primary" 
+              size="lg" 
+              className="min-w-48"
+              onClick={() => {
+                const appLayout = document.querySelector('[data-tab-navigation]') as any;
+                if (appLayout) appLayout.setActiveTab('portfolio');
+              }}
+            >
               View Our Work
             </Button>
-            <Button variant="outline" size="lg" className="min-w-48 bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-blue-600">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="min-w-48 bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-blue-600"
+              onClick={() => {
+                const appLayout = document.querySelector('[data-tab-navigation]') as any;
+                if (appLayout) appLayout.setActiveTab('contact');
+              }}
+            >
               Get a Free Quote
             </Button>
+          </div>
+          
+          {/* Brief Introduction */}
+          <div className="mt-12 max-w-4xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+              <p className="text-white/90 text-lg leading-relaxed">
+                Founded by two Computer Science graduates, Innovira Solutions helps businesses grow with smart, 
+                affordable, and reliable digital solutions. We combine creativity and technology to make ideas a reality.
+              </p>
+            </div>
           </div>
         </div>
 

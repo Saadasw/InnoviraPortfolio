@@ -60,6 +60,18 @@ const ServicesSection: React.FC = () => {
             />
           ))}
         </div>
+
+        <div className="text-center mt-12">
+          <button 
+            className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+            onClick={() => {
+              const event = new CustomEvent('navigate-to-contact');
+              window.dispatchEvent(event);
+            }}
+          >
+            Let's Build Your Project
+          </button>
+        </div>
       </div>
     </section>
   );
