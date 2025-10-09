@@ -1,93 +1,74 @@
 import React from 'react';
+import { Quote, Star } from 'lucide-react';
 
 const TestimonialsSection: React.FC = () => {
   const testimonials = [
     {
-      quote: "Innovira Solutions helped us launch quickly and professionally. Their e-commerce platform transformed our business completely.",
-      author: "Avenue by Unimart",
-      role: "E-commerce Platform",
+      quote: "Innovira Solutions transformed our business with a custom e-commerce platform. Their team's expertise and dedication exceeded our expectations. The project was delivered on time, and the ongoing support has been exceptional. Highly recommend them for any digital transformation project.",
+      author: "Sarah Johnson",
+      role: "CEO, RetailPro Inc.",
       rating: 5,
-      image: "🛒"
     },
     {
-      quote: "Our driving school now has a modern digital presence thanks to Innovira. The booking system has streamlined our operations significantly.",
-      author: "Rawaa Driving School",
-      role: "Business Website",
+      quote: "Working with Innovira was a game-changer for our startup. They built our MVP from scratch and helped us scale to 10,000+ users in just 6 months. Their technical expertise, combined with their understanding of business needs, made all the difference. Truly a reliable partner!",
+      author: "Michael Chen",
+      role: "Founder, TechStart",
       rating: 5,
-      image: "🚗"
     },
     {
-      quote: "Working with Innovira's founders directly made all the difference. They understood our vision and delivered beyond expectations.",
-      author: "Local Business Owner",
-      role: "Custom Software",
+      quote: "The mobile app developed by Innovira Solutions has revolutionized how we connect with our customers. Their innovative approach, attention to detail, and commitment to quality resulted in a product that our users love. We've seen a 40% increase in engagement since launch.",
+      author: "Emily Rodriguez",
+      role: "Product Manager, HealthWell",
       rating: 5,
-      image: "💼"
     },
     {
-      quote: "The team's expertise in both technology and business understanding is remarkable. They don't just code, they solve problems.",
-      author: "Startup Founder",
-      role: "MVP Development",
+      quote: "From concept to deployment, Innovira Solutions demonstrated exceptional professionalism. They took time to understand our unique requirements and delivered a solution that perfectly fits our needs. Their post-launch support and maintenance have been outstanding.",
+      author: "David Thompson",
+      role: "CTO, FinanceHub",
       rating: 5,
-      image: "🚀"
-    }
+    },
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            What Our Clients Say
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-4 leading-tight">
+            Success Stories
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-green-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied clients 
-            have to say about working with Innovira Solutions.
-          </p>
+          <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-blue-600 to-green-600 mx-auto"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto"  style={{ gridAutoRows: '1fr' }}>
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-gradient-to-br from-blue-50 to-green-50 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100">
-              <div className="flex items-center mb-6">
-                <div className="text-4xl mr-4">{testimonial.image}</div>
-                <div>
-                  <h4 className="font-bold text-gray-900">{testimonial.author}</h4>
-                  <p className="text-blue-600 text-sm">{testimonial.role}</p>
-                </div>
+            <div
+              key={index}
+              className="relative bg-white rounded-xl sm:rounded-2xl shadow-xl p-6 sm:p-8 hover:shadow-2xl transition-all duration-300 border border-gray-100"
+            >
+              {/* Quote Icon */}
+              <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              
-              <div className="flex mb-4">
+
+              {/* Stars */}
+              <div className="flex gap-1 mb-3 sm:mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
+                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-yellow-400" />
                 ))}
               </div>
 
-              <blockquote className="text-gray-700 italic leading-relaxed">
-                "{testimonial.quote}"
+              {/* Testimonial Text */}
+              <blockquote className="text-gray-700 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
+                {testimonial.quote}
               </blockquote>
+
+              {/* Author Info */}
+              <div className="border-t border-gray-200 pt-3 sm:pt-4">
+                <h4 className="font-bold text-gray-900 text-base sm:text-lg">{testimonial.author}</h4>
+                <p className="text-sm sm:text-base text-blue-600">{testimonial.role}</p>
+              </div>
             </div>
           ))}
-        </div>
-
-        <div className="bg-gradient-to-r from-blue-600 to-green-600 rounded-2xl p-8 text-center text-white">
-          <h3 className="text-2xl font-bold mb-4">
-            Join Our Growing List of Satisfied Clients
-          </h3>
-          <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-            Ready to experience the Innovira difference? Let's discuss how we can 
-            help transform your business with our proven expertise.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
-              Start Your Success Story
-            </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300">
-              Read More Reviews
-            </button>
-          </div>
         </div>
       </div>
     </section>

@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import Button from './Button';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    fullName: '',
     email: '',
-    businessType: '',
-    service: '',
+    subject: '',
+    companyName: '',
     message: ''
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -24,168 +27,166 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Let's Build Your Project Together
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-4 leading-tight">
+            Ready to Supercharge Your Development Team?
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-green-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to transform your business with innovative digital solutions? 
-            Get in touch with us today for a free consultation.
+          <div className="w-16 sm:w-20 md:w-24 h-1 bg-gradient-to-r from-blue-600 to-green-600 mx-auto mb-4 sm:mb-6"></div>
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4">
+            Connect with us today and let's accelerate the growth of your development team with the right talent and expertise!
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className="bg-gray-50 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
-                  />
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
+          {/* Contact Information */}
+          <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">
+                Have a project in mind! Drop us a line.
+              </h3>
+              
+              <div className="space-y-4 sm:space-y-6">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Email us</p>
+                    <a href="mailto:info@innovirasolutions.com" className="text-sm sm:text-base text-gray-600 hover:text-blue-600 break-all">
+                      info@innovirasolutions.com
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
-                  />
+
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Phone number</p>
+                    <a href="tel:+1234567890" className="text-sm sm:text-base text-gray-600 hover:text-blue-600">
+                      +1 (234) 567-890
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Address</p>
+                    <p className="text-sm sm:text-base text-gray-600">
+                      Your Business Address<br />
+                      City, Country
+                    </p>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Business Type</label>
-                  <select
-                    name="businessType"
-                    value={formData.businessType}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">Select Business Type</option>
-                    <option value="startup">Startup</option>
-                    <option value="small-business">Small Business</option>
-                    <option value="medium-business">Medium Business</option>
-                    <option value="enterprise">Enterprise</option>
-                    <option value="individual">Individual</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Service Interested</label>
-                  <select
-                    name="service"
-                    value={formData.service}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">Select Service</option>
-                    <option value="web-development">Web Development</option>
-                    <option value="custom-software">Custom Software</option>
-                    <option value="mobile-apps">Mobile Apps</option>
-                    <option value="research-data">Research & Data</option>
-                    <option value="digital-presence">Digital Presence</option>
-                  </select>
-                </div>
+            {/* Decorative Image - Hidden on mobile */}
+            <div className="hidden lg:block">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-green-400 rounded-2xl blur-2xl opacity-20"></div>
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop"
+                  alt="Contact"
+                  className="relative rounded-2xl shadow-xl w-full h-auto"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form - Mobile First */}
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-5 sm:p-6 md:p-8 border border-gray-100 order-1 lg:order-2">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div>
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                  Full Name*
+                </label>
+                <Input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleInputChange}
+                  placeholder="John Doe"
+                  required
+                  className="h-10 sm:h-11"
+                />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Project Details</label>
-                <textarea
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                  Email Address*
+                </label>
+                <Input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="john@example.com"
+                  required
+                  className="h-10 sm:h-11"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                  Subject*
+                </label>
+                <Input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  placeholder="How can we help you?"
+                  required
+                  className="h-10 sm:h-11"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                  Company Name*
+                </label>
+                <Input
+                  type="text"
+                  name="companyName"
+                  value={formData.companyName}
+                  onChange={handleInputChange}
+                  placeholder="Your Company"
+                  required
+                  className="h-10 sm:h-11"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                  Message*
+                </label>
+                <Textarea
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Tell us about your project requirements..."
-                ></textarea>
+                  placeholder="Tell us about your project..."
+                  required
+                  className="text-sm sm:text-base"
+                />
               </div>
 
-              <Button variant="primary" size="lg" className="w-full">
+              <Button 
+                type="submit"
+                size="lg"
+                className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white group shadow-lg hover:shadow-xl transition-all"
+              >
                 Send Message
+                <Send className="ml-2 group-hover:translate-x-1 transition-transform w-4 h-4 sm:w-[18px] sm:h-[18px]" />
               </Button>
             </form>
-          </div>
-
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-gradient-to-br from-blue-600 to-green-600 rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
-                    <span className="text-xl">📧</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold">Email</p>
-                    <p className="text-blue-100">info@innovirasolutions.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
-                    <span className="text-xl">📱</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold">Phone</p>
-                    <p className="text-blue-100">+880 XXX-XXXX</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
-                    <span className="text-xl">💬</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold">WhatsApp</p>
-                    <Button variant="outline" size="sm" className="mt-2 border-white text-white hover:bg-white hover:text-blue-600">
-                      Chat with Us
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <h4 className="text-xl font-bold text-gray-900 mb-4">Follow Us</h4>
-              <div className="flex space-x-4">
-                <a href="#" className="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
-                  <span className="text-xl">💼</span>
-                </a>
-                <a href="#" className="w-12 h-12 bg-blue-500 text-white rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
-                  <span className="text-xl">📘</span>
-                </a>
-                <a href="#" className="w-12 h-12 bg-gray-800 text-white rounded-lg flex items-center justify-center hover:bg-gray-900 transition-colors">
-                  <span className="text-xl">💻</span>
-                </a>
-              </div>
-            </div>
-
-            <div className="bg-green-50 rounded-2xl p-8 border border-green-200">
-              <h4 className="text-xl font-bold text-gray-900 mb-4">Quick Response Guarantee</h4>
-              <p className="text-gray-700 mb-4">
-                We respond to all inquiries within 24 hours. For urgent projects, 
-                contact us via WhatsApp for immediate assistance.
-              </p>
-              <div className="flex items-center text-green-600">
-                <span className="text-lg mr-2">✓</span>
-                <span className="font-semibold">24-hour response time</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
